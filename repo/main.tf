@@ -32,7 +32,6 @@ data "external" "git_repo" {
   }
 }
 
-# NOTE: This requires an empty project being manually created in advance using the Databricks console
 resource "databricks_notebook" "repo" {
   for_each = fileset(data.external.git_repo.result.git_repo_dir, "**/*.{py,r,sc,scala,sql}")
 
